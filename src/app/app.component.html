@@ -1,0 +1,34 @@
+<mat-toolbar class="fixed-header mat-elevation-z6" color="primary">
+
+  <button mat-button routerLink="/">
+    <mat-icon>home</mat-icon>
+    {{title}}</button>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <mat-menu #appMenu="matMenu" xPosition="before" [overlapTrigger]="false" yPosition="below">
+      <button mat-menu-item> Help </button>
+      <button mat-menu-item (click)="signOut()"> Logout </button>
+
+    </mat-menu>
+
+    <button mat-icon-button *ngIf="(currentUser | async) ; let user" [matMenuTriggerFor]="appMenu">
+      <img class="avatar" width="24" height="24" src="{{user.photoURL}}">
+    </button>
+    <!-- <mat-icon></mat-icon> -->
+  </div>
+
+  <!-- <button *ngIf = "currentUser " mat-button  fxHide="false" fxHide.gt-sm>
+       <mat-icon>menu</mat-icon>
+      </button> -->
+
+</mat-toolbar>
+<div class="offset-by-toolbar">
+  <router-outlet>
+      <div class="loading-overlay" *ngIf="loading">
+          <!-- show something fancy here, here with Angular 2 Material's loading bar or circle -->
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+  </router-outlet>
+</div>

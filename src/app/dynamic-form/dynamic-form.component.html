@@ -1,0 +1,37 @@
+<mat-form-field>
+  <input cdkFocusInitial placeholder="Phone number" matInput tabindex="1" [(ngModel)]="data.phonenumber">
+</mat-form-field>
+<mat-form-field>
+  <input placeholder="Unique key" matInput tabindex="1" [(ngModel)]="data.uniquenumber">
+</mat-form-field>
+<mat-form-field>
+  <input placeholder="Label " matInput tabindex="1" [(ngModel)]="data.label">
+</mat-form-field>
+
+
+<form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
+  <mat-form-field floatLabel="auto" *ngFor="let prop of objectProps">
+
+    <!-- <label [attr.for]="prop">{{prop.label}}</label> -->
+
+    <div [ngSwitch]="prop.type">
+      <input matInput *ngSwitchCase="'text'" [placeholder]="prop.label" [formControlName]="prop.key" [id]="prop.key" [type]="prop.type">
+      <mat-radio-group *ngSwitchCase="'radio'" [formControlName]="prop.key">
+        <mat-radio-button *ngFor="let option of prop.options" type="radio" [value]="option.value"> {{option.label}} </mat-radio-button>
+      </mat-radio-group>
+      <mat-checkbox *ngSwitchCase="'checkbox'" [formControlName]="prop.key">{{prop.label}}</mat-checkbox>
+      <div *ngSwitchCase="'select'">
+        <select [formControlName]="prop.key">
+          <option *ngFor="let option of prop.options" [value]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+  </mat-form-field>
+  <div mat-dialog-actions align="end">
+    <button mat-button *ngIf="submitButton" type="submit">Save</button>
+    <button mat-button *ngIf="cancelButton" (onclick)="formcancel.emit()">Cancel</button>
+  </div>
+</form>

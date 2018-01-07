@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Add a new connection</h1>
+<div mat-dialog-content>
+  <app-dynamic-form [dataObject]="data" (formsubmit)="onFormSubmit($event)" ></app-dynamic-form>
+
+  <mat-form-field>
+    <input cdkFocusInitial placeholder="Phone number" matInput tabindex="1" [(ngModel)]="data.phonenumber">
+  </mat-form-field>
+  <mat-form-field>
+    <input placeholder="Unique key" matInput tabindex="1" [(ngModel)]="data.uniquenumber">
+  </mat-form-field>
+  <mat-form-field>
+    <input placeholder="Label " matInput tabindex="1" [(ngModel)]="data.label">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="null">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" >Ok</button>
+</div>

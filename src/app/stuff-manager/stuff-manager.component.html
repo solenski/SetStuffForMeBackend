@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <mat-grid-list [cols]="2" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let shortcut of shortcuts | async">
+        <img *ngIf="shortcut.visualSettings.image" [src]="shortcut.visualSettings.image">
+        <mat-icon class="tile-icon-main" *ngIf="shortcut.visualSettings.icon"> {{shortcut.visualSettings.icon}} </mat-icon>
+
+
+        <mat-grid-tile-footer>
+          <h3 mat-line>{{shortcut.type}}</h3>
+          <span mat-line>{{shortcut.visualSettings.label}}</span>
+          <button mat-icon-button (click)="editShortcut(shortcut)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

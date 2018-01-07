@@ -1,0 +1,28 @@
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 40px !important;
+  width: 100% !important;
+}
+
+.fill-remaining-space {
+  /*This fills the remaining space, by using flexbox.
+ Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+.avatar {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+
+  -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999,
+    0 2px 5px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999,
+    0 2px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0, 0, 0, 0.2);
+}
+.offset-by-toolbar {
+  margin-top: 45px;
+}

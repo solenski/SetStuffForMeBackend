@@ -1,0 +1,7 @@
+
+
+<mat-nav-list>
+    <a mat-list-item routerLink="{{record.phonenumber}}" *ngFor="let record of data | async"> {{ record.phonenumber }} </a>
+    <a mat-list-item (click)="addNew()"> add new </a>
+</mat-nav-list>
+
