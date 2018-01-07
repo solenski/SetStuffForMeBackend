@@ -1,0 +1,3 @@
+[submodule "src/app/interfaces"]
+	path = src/app/interfaces
+	url = https://github.com/solenski/SetStuffForMeInterfaces.git

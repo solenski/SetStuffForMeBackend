@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,7 +6,6 @@ import {
   Validators
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -15,17 +14,21 @@ import { EventEmitter } from 'selenium-webdriver';
 })
 export class DynamicFormComponent implements OnInit {
   @Input() dataObject;
+  @Output() dataObjectChange = new EventEmitter();
   @Input() submitButton = true;
   @Input() cancelButton = true;
 
-  @Output() formsubmit: EventEmitter = new EventEmitter();
-  @Output() formcancel: EventEmitter = new EventEmitter();
+  @Output() formsubmit = new EventEmitter();
+  @Output() formcancel = new EventEmitter();
 
   form: FormGroup;
   objectProps;
 
   constructor() {}
-
+  emitchange() {
+    this.dataObjectChange.emit(    this.form.value
+    );
+  }
   ngOnInit() {
     // remap the API to be suitable for iterating over it
     this.objectProps = Object.keys(this.dataObject).map(prop => {

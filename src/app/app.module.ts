@@ -75,7 +75,8 @@ const ROUTES: Route[] = [
     TelNumberActivateGuard,
     AuthService,
     PhoneNumberListResolverService,
-    UserDataResolverService
+    UserDataResolverService,
+
   ],
   entryComponents: [AddNewConnectionComponent, ShortcutUsertComponent],
   bootstrap: [AppComponent]

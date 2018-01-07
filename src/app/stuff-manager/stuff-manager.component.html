@@ -2,17 +2,28 @@
   <div>
     <mat-grid-list [cols]="2" rowHeight="2:1">
       <mat-grid-tile *ngFor="let shortcut of shortcuts | async">
-        <img *ngIf="shortcut.visualSettings.image" [src]="shortcut.visualSettings.image">
-        <mat-icon class="tile-icon-main" *ngIf="shortcut.visualSettings.icon"> {{shortcut.visualSettings.icon}} </mat-icon>
+        <img *ngIf="shortcut?.data?.visualSettings?.image" [src]="shortcut?.data?.visualSettings?.image">
+        <mat-icon class="tile-icon-main" *ngIf="shortcut?.data?.visualSettings?.icon"> {{shortcut?.data.visualSettings.icon}} </mat-icon>
 
 
         <mat-grid-tile-footer>
-          <h3 mat-line>{{shortcut.type}}</h3>
-          <span mat-line>{{shortcut.visualSettings.label}}</span>
-          <button mat-icon-button (click)="editShortcut(shortcut)">
+          <h3 mat-line>{{shortcut?.data?.type}}</h3>
+          <span *ngIf="shortcut?.data?.visualSettings?.label" mat-line>{{shortcut.data.visualSettings.label}}</span>
+          <!-- <button mat-icon-button (click)="editShortcut(shortcut)">
             <mat-icon>edit</mat-icon>
+          </button> -->
+          <button mat-icon-button (click)="deleteShortcut(shortcut)">
+            <mat-icon>delete</mat-icon>
           </button>
         </mat-grid-tile-footer>
+      </mat-grid-tile>
+      <mat-grid-tile >
+        <button  mat-button (click)="addShortcut('dial')">
+          AddNew dial
+        </button>
+        <button  mat-button (click)="addShortcut('sms')">
+          AddNew sms
+        </button>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

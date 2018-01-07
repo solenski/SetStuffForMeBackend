@@ -17,7 +17,9 @@ import {
   MatDialogModule,
   MatCardModule,
   MatGridListModule,
-  MatRadioModule
+  MatRadioModule,
+  MAT_DIALOG_DATA,
+  MatDialogRef
 } from '@angular/material';
 
 const MATERIAL_DESIGN_MODULES = [
@@ -36,10 +38,15 @@ const MATERIAL_DESIGN_MODULES = [
   MatRadioModule,
   MatCheckboxModule
 ];
+const MATERIAL_DESING_PROVIDERS = [
+
+
+];
 
 @NgModule({
   imports: MATERIAL_DESIGN_MODULES,
   exports: MATERIAL_DESIGN_MODULES,
+  providers: MATERIAL_DESING_PROVIDERS,
   declarations: []
 })
 export class MaterialImportsModule {}
